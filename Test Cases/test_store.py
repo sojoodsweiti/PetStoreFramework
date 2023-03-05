@@ -27,7 +27,7 @@ def order_id(order_data):
     return order_id
 
 
-# 1st end point: Place an order for a pet
+# 1st endpoint: Place an order for a pet
 def test_place_an_order_for_a_pet(order_data):
     response = requests.post(f"{base_url}/store/order", json=order_data)
     assert_that(response.status_code).is_equal_to(200)
@@ -56,7 +56,7 @@ def test_place_order_missing_fields():
     assert_that(response.status_code).is_equal_to(200)
 
 
-# 2nd end point: Find purchase order by id
+# 2nd endpoint: Find purchase order by id
 def test_get_order_by_id(order_data, order_id):
     response = requests.get(f"{base_url}/store/order/{order_id}")
     order = response.json()
@@ -83,7 +83,7 @@ def test_get_order_with_negative_id():
     assert_that(response.status_code).is_equal_to(404)
 
 
-# 3rd end point: Delete purchase order by id
+# 3rd endpoint: Delete purchase order by id
 def test_delete_order_by_id(order_data, order_id):
     response = requests.delete(f"{base_url}/store/order/{order_id}")
     assert_that(response.status_code).is_equal_to(200)
@@ -103,7 +103,7 @@ def test_delete_order_with_invalid_id_type():
     assert_that(response.status_code).is_equal_to(404)
 
 
-# 4th end point: Returns pet inventories by status
+# 4th endpoint: Returns pet inventories by status
 def test_get_inventory_by_status():
     response = requests.get(f"{base_url}/store/inventory")
     assert response.status_code == 200
