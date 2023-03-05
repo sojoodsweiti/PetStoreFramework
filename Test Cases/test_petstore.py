@@ -11,7 +11,7 @@ from Base import base_url
 @pytest.fixture
 def new_pet():
     return {
-        "id":  9223372036854744894,
+        "id": 9223372036854775807,
         "category": {"id": 0, "name": "string"},
         "name": "Test Pet",
         "photoUrls": ["string"],
@@ -27,10 +27,14 @@ def pet_id(new_pet):
     return pet_id
 
 
-def test_add_new_pet_to_store(new_pet):
+# 2nd end point: Add a new pet to the store
+def test_add_new_pet_to_store(new_pet, pet_id):
     response = requests.post(f"{base_url}/pet", json=new_pet)
     assert_that(response.status_code).is_equal_to(200)
     assert_that(response.json()).is_equal_to(new_pet)
+
+
+# *****
 
 
 def test_update_an_existing_pet(pet_id):

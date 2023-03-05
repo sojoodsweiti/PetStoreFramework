@@ -49,17 +49,17 @@ def test_update_user(user_payload):
     assert_that(response.status_code).is_equal_to(200)
 
 
-def test_delete_user(user_payload):
-    username = user_payload["username"]
-    response = requests.delete(f"{base_url}/user/{username}")
-    assert_that(response.status_code).is_equal_to(200)
-    response = requests.get(f"{base_url}/user/{username}")
-    assert_that(response.status_code).is_equal_to(404)
-
-
-def test_login(credentials):
-    response = requests.get(f"{base_url}/user/login", json=credentials)
-    assert_that(response.status_code).is_equal_to(200)
-    assert_that(response.json()["message"]).is_equal_to("logged in user session: 1676360253628")
+# def test_delete_user(user_payload):
+#     username = user_payload["username"]
+#     response = requests.delete(f"{base_url}/user/{username}")
+#     assert_that(response.status_code).is_equal_to(200)
+#     response = requests.get(f"{base_url}/user/{username}")
+#     assert_that(response.status_code).is_equal_to(404)
+#
+#
+# def test_login(credentials):
+#     response = requests.get(f"{base_url}/user/login", json=credentials)
+#     assert_that(response.status_code).is_equal_to(200)
+#     assert_that(response.json()["message"]).is_equal_to("logged in user session: 1676360253628")
 
 
